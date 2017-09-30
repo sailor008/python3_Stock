@@ -39,4 +39,4 @@ FileHelper._init()
 # api_func.request_stock_block_list()
 
 
-Logger.writeline("--->>>test_log")
+Logger.writeLine("--->>>test_log565631")
