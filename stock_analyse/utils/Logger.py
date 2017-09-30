@@ -1,5 +1,5 @@
 """
-log输出
+log管理类
 """
 import time
 import os
@@ -12,11 +12,15 @@ log_data_path = root_path+"/log_files/"
 IsLog = True
 LogLevel = 1 #注意：该参数暂未启用！
 
-m_perLogFileSize = 4.0 #这里的单位是M（兆），单个log文件的大小
+m_perLogFileSize = 4.0 * 1024 #这里的单位是kb，单个log文件的大小
 
 # #每次开启程序时，以当前的日期创建log文件目录
 m_todayDate = time.strftime('%Y%m%d', time.localtime(time.time()))
 m_todayLogPath = log_data_path+m_todayDate+"/"
+
+
+m_logFileObj = None
+m_logFileWriter = None
 
 def _init():
 	if not os.path.exists(log_data_path): 
@@ -36,22 +40,44 @@ def log(msg, tag = None):
 		tag = "BaseLog";
 	print(""+tag+":--->> "+msg)
 
-def writeLine(msg, tag = None):
+def writeSingleLine(msg, tag = None):
 	if not IsLog:
 		return
 	if tag==None:
 		tag = "BaseLog";
 	print("------------is log file exist???:%d" %os.path.isfile(m_todayLogPath+m_todayDate+".csv"))
-	fileSize = os.path.getsize(m_todayLogPath+m_todayDate+".csv")
-	print("file.size = %f kb"%(fileSize/1024))
 	timestamp = time.time()
-	logfile = open(m_todayLogPath+m_todayDate+".csv", 'a+') 
+	writer, logfile = getLogFileWriter()
 	try:
-		writer = csv.writer(logfile) 
-		writer.writerow(('Time', 'Tag', 'Content')) 
 		writer.writerow((timestamp, tag, msg)) 
 	finally:
 		logfile.close()
+
+def startWriteArrowLog():
+	m_logFileWriter, m_logFileObj = getLogFileWriter()
+
+def writeArrowLog(msgArray, tag = None):
+
+def endWriteArrowLog():
+	m_logFileObj = None
+	m_logFileWriter = None
+
+def getLogFileWriter():
+	curLogFilePath = m_todayLogPath+m_todayDate+".csv"
+	fileWriter = None
+	if os.path.isfile(curLogFilePath):
+		logfile = open(curLogFilePath, 'a+')
+		fileWriter = csv.writer(logfile)
+		# fileSize = os.path.getsize(m_todayLogPath+m_todayDate+".csv")
+		# print("file.size = %f kb"%(fileSize/1024))
+	else:
+		logfile = open(curLogFilePath, 'a+')
+		# fields = ['Time', 'Tag', 'Content']
+		# fileWriter = csv.DictWriter(logfile, fieldnames = fields)
+		# fileWriter.writeheader()
+		fileWriter = csv.writer(logfile)
+		fileWriter.writerow(['Time', 'Tag', 'Content'])
+	return fileWriter, logfile
 
 
 def func_replaceFileWithData(file, data):
