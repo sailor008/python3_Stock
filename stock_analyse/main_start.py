@@ -6,6 +6,7 @@ root_path = os.path.abspath('.')
 sys.path.append(root_path+'/utils')
 sys.path.append(root_path+'/showapi')
 
+import csv
 
 #import custom code
 import constant
@@ -39,4 +40,30 @@ FileHelper._init()
 # api_func.request_stock_block_list()
 
 
-Logger.writeSingleLine("--->>>test_log565631")
+Logger.writeSingleLine("--->>>test_log565631", None)
+
+
+import json
+
+
+
+# jsonString = "{\"showapi_res_code\": 0,\"showapi_res_error\": \"\",\"showapi_res_body\": {\"ret_code\": 0,list\": [{\"min_price\": \"11.510\",\"market\": \"sh\",\"trade_num\": \"17541504\",\"trade_money\": \"215834624\",\"close_price\": \"12.480\",\"open_price\": \"11.700\",\"code\": \"600004\",\"max_price\": \"12.700\",\"date\": \"2015-09-02\"},{\"min_price\": \"11.920\",\"market\": \"sh\",\"trade_num\": \"8111935\",\"trade_money\": \"99310240\",\"close_price\": \"12.110\",\"open_price\": \"12.680\",\"code\": \"600004\",\"max_price\": \"12.680\",\"date\": \"2015-09-01\"}]}}"
+jsonString = "{\"showapi_res_code\":0,\"showapi_res_error\":\"\",\"showapi_res_body\":{\"ret_code\":0,\"list\":[{\"min_price\":\"11.510\",\"market\":\"sh\",\"trade_num\":\"17541504\",\"trade_money\":\"215834624\",\"close_price\":\"12.480\",\"open_price\":\"11.700\",\"code\":\"600004\",\"max_price\":\"12.700\",\"date\":\"2015-09-02\"},{\"min_price\":\"11.920\",\"market\":\"sh\",\"trade_num\":\"8111935\",\"trade_money\":\"99310240\",\"close_price\":\"12.110\",\"open_price\":\"12.680\",\"code\":\"600004\",\"max_price\":\"12.680\",\"date\":\"2015-09-01\"}]}}"
+jsonAttrs = json.loads(jsonString)
+
+if jsonAttrs.get("showapi_res_code")!=None and jsonAttrs.get("showalpi_res_code") == 0:
+	print("is get data success!!!")
+else:
+	print("Error:api respone result code!")
+print("====================\n")
+
+m_list = {}
+bodyData = jsonAttrs.get("showapi_res_body")
+if bodyData != None and bodyData.get("list") != None:
+	m_list = bodyData.get("list")
+	print("keys = %s"%len(m_list))
+	print("obj.type = %s"%type(m_list[0]))
+	if(len(m_list) > 0):
+		fileObj = open(root_path+'/log_files/test.csv', 'a+')
+		writer = csv.DictWriter(fileObj, m_list[0].keys())
+		writer.writeheader()
