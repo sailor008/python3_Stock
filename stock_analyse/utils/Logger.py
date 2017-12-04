@@ -57,8 +57,11 @@ def startWriteArrowLog():
 	m_logFileWriter, m_logFileObj = getLogFileWriter()
 
 def writeArrowLog(msgArray, tag = None):
+	print("----")
 
 def endWriteArrowLog():
+	global m_logFileObj
+	global m_logFileWriter
 	m_logFileObj = None
 	m_logFileWriter = None
 
