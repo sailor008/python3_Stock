@@ -46,41 +46,51 @@ def writeSingleLine(msg, tag = None):
 	if tag==None:
 		tag = "BaseLog";
 	print("------------is log file exist???:%d" %os.path.isfile(m_todayLogPath+m_todayDate+".csv"))
-	timestamp = time.time()
-	writer, logfile = getLogFileWriter()
+	startWriteArrowLog()
 	try:
-		writer.writerow((timestamp, tag, msg)) 
+		writeRowLog(msg, tag)
 	finally:
-		logfile.close()
+		endWriteArrowLog()
 
 def startWriteArrowLog():
-	m_logFileWriter, m_logFileObj = getLogFileWriter()
+	global m_logFileWriter
+	m_logFileWriter = getLogFileWriter()
 
+def writeRowLog(msg, tag = None):
+	if m_logFileWriter == None:
+		print("Error: log file writer is not init!!!")
+		return
+	if tag==None:
+		tag = "BaseLog";
+	timestamp = time.time()
+	m_logFileWriter.writerow((timestamp, tag, msg)) 
 def writeArrowLog(msgArray, tag = None):
 	print("----")
 
 def endWriteArrowLog():
 	global m_logFileObj
 	global m_logFileWriter
+	m_logFileObj.close()
 	m_logFileObj = None
 	m_logFileWriter = None
 
 def getLogFileWriter():
+	global m_logFileObj
 	curLogFilePath = m_todayLogPath+m_todayDate+".csv"
 	fileWriter = None
 	if os.path.isfile(curLogFilePath):
-		logfile = open(curLogFilePath, 'a+')
-		fileWriter = csv.writer(logfile)
+		m_logFileObj = open(curLogFilePath, 'a+')
+		fileWriter = csv.writer(m_logFileObj)
 		# fileSize = os.path.getsize(m_todayLogPath+m_todayDate+".csv")
 		# print("file.size = %f kb"%(fileSize/1024))
 	else:
-		logfile = open(curLogFilePath, 'a+')
+		m_logFileObj = open(curLogFilePath, 'a+')
 		# fields = ['Time', 'Tag', 'Content']
-		# fileWriter = csv.DictWriter(logfile, fieldnames = fields)
+		# fileWriter = csv.DictWriter(m_logFileObj, fieldnames = fields)
 		# fileWriter.writeheader()
-		fileWriter = csv.writer(logfile)
+		fileWriter = csv.writer(m_logFileObj)
 		fileWriter.writerow(['Time', 'Tag', 'Content'])
-	return fileWriter, logfile
+	return fileWriter
 
 
 def func_replaceFileWithData(file, data):
