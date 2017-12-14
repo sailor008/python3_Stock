@@ -5,6 +5,8 @@ root_path = os.path.abspath('.')
 # #把模块的路径加到当前的主程序中
 sys.path.append(root_path+'/utils')
 sys.path.append(root_path+'/showapi')
+sys.path.append(root_path+'/model')
+
 
 import csv
 
@@ -13,6 +15,7 @@ import constant
 import g_var
 import Logger
 import FileHelper
+import NetworkMgr
 
 import api_func
 
@@ -42,22 +45,7 @@ FileHelper._init()
 
 # Logger.writeSingleLine("--->>>test_log565631", None)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+import Stock_block_model
 
 
 

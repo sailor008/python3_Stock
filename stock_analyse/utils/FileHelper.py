@@ -18,14 +18,14 @@ import Logger
 root_path = os.path.abspath('.')
 LOG_TAG = "FileHelper"
 
-m_globalFileDic = {}
+m_globalDataFileDic = {}
 
 def _init():
 	initDataFileDic()
 
 def initDataFileDic():
 	#使用的全局变量.begin:
-	global m_globalFileDic
+	global m_globalDataFileDic
 	#使用的全局变量.end
 	data_path = g_var.get_value('DataPath')
 	if not os.path.exists(data_path): 
@@ -33,12 +33,13 @@ def initDataFileDic():
 		Logger.log("create path【data】...", LOG_TAG)
 		return
 	Logger.log("【data】path is exist!!!! \n\n\n", LOG_TAG)
-	m_globalFileDic = getFileList("/Users/SeekMac/Code_Projects/study_python/python_projects/stock_analyse")
-	print("目录的总数 = %d"%len(m_globalFileDic.keys()))
-	for keystr, val in m_globalFileDic.items():
+	m_globalDataFileDic = getFileList(data_path)
+	print("data文件的总数 = %d"%len(m_globalDataFileDic.keys()))
+	for keystr, val in m_globalDataFileDic.items():
 		print("------>>> %s : %s \n" %(keystr,val))
 	print("Tip: DataFileDic init success!")
 
+# 【注意：相同的文件名，在不同的目录下，后续优化给出警告的提示！】
 def getFileList(targetPath, recursiveCount = -1, ignoreFileExteDic = {'.pyc','.DS_Store','.gitignore','.svn'}):
 	fileList = {}
 	if(not os.path.isdir(targetPath)):

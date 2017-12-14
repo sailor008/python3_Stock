@@ -37,8 +37,14 @@ def log(msg, tag = None):
 	if not IsLog:
 		return
 	if tag==None:
-		tag = "BaseLog";
-	print(""+tag+":--->> "+msg)
+		tag = "==>>";
+	print("%s : %s \n"%(tag,msg))
+
+def logTip(msg):
+	log(msg, "Tip")
+
+def logError(msg):
+	log(msg, "Error")
 
 def writeSingleLine(msg, tag = None):
 	if not IsLog:
