@@ -2,42 +2,23 @@
 FileName: FileHelper.py
 文件操作类
 """
-import sys
-import os
-
 import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 # from urllib.request import urlretrieve 
 # from urllib.request import urlopen 
 # from bs4 import BeautifulSoup
+
+import os
 import csv
 
 import g_var
 import Logger
 
-root_path = os.path.abspath('.')
 LOG_TAG = "FileHelper"
-
-m_globalDataFileDic = {}
+application_path = g_var.get_value("applicationPath")
 
 def _init():
-	initDataFileDic()
-
-def initDataFileDic():
-	#使用的全局变量.begin:
-	global m_globalDataFileDic
-	#使用的全局变量.end
-	data_path = g_var.get_value('DataPath')
-	if not os.path.exists(data_path): 
-		os.makedirs(data_path)
-		Logger.log("create path【data】...", LOG_TAG)
-		return
-	Logger.log("【data】path is exist!!!! \n\n\n", LOG_TAG)
-	m_globalDataFileDic = getFileList(data_path)
-	print("data文件的总数 = %d"%len(m_globalDataFileDic.keys()))
-	for keystr, val in m_globalDataFileDic.items():
-		print("------>>> %s : %s \n" %(keystr,val))
-	print("Tip: DataFileDic init success!")
+	Logger.log("is FileHelper.init()")
 
 # 【注意：相同的文件名，在不同的目录下，后续优化给出警告的提示！】
 def getFileList(targetPath, recursiveCount = -1, ignoreFileExteDic = {'.pyc','.DS_Store','.gitignore','.svn'}):
@@ -73,9 +54,32 @@ def getFileList(targetPath, recursiveCount = -1, ignoreFileExteDic = {'.pyc','.D
 				tempRecursiveDic[fullPath] = tempRecursiveDic[curPath] + 1
 	return fileList
 
+def get_title_rows(jsonListData):
+    title = []
+    row_num = 0
+    rows=[]
+    for key in jsonListData:
+        title.append(key)
+        v = jsonListData[key]
+        if len(v)>row_num:
+            row_num = len(v)
+        continue
+    for i in range(row_num):
+        row = {}
+        for k in jsonListData:
+            v = jsonListData[k]
+            if i in v.keys():
+                row[k]=v[i]
+            else:
+                row[k] = ''
+        rows.append(row)
+    return title, rows
 
-def create_file(fileName):
-	Logger.log("is c", LOG_TAG)
+# 后续需要处理文件的操作权限！！！
+def createFile(filePath):
+	Logger.log("is create file = %s"%filePath, LOG_TAG)
+	open(filePath, "w")
+
 def deleteFile(fileName):
 	Logger.log("deleteFile.name = "+fileName)
 

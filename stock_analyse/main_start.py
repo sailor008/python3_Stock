@@ -1,34 +1,37 @@
 # import system module
 import sys
 import os
-root_path = os.path.abspath('.')
+application_path = os.path.abspath('.')
 # #把模块的路径加到当前的主程序中
-sys.path.append(root_path+'/utils')
-sys.path.append(root_path+'/showapi')
-sys.path.append(root_path+'/model')
+sys.path.append(application_path+'/utils')
+sys.path.append(application_path+'/showapi')
+sys.path.append(application_path+'/model')
+
+
+import constant
+import g_var
+g_var._init()#在主模块初始化全局变量的dic
+# #定义当前的程序名称
+g_var.set_value("ApplicationTag", "stock_analyse")
+# #定义文件的根路径
+g_var.set_value('ApplicationPath', application_path)
+# #定义文件的根路径
+g_var.set_value('DataPath', application_path+'/data')
+# #定义跨模块全局变量
+g_var.set_value('HOST','https://ali-stock.showapi.com-8')
+
 
 
 import csv
 
 #import custom code
-import constant
-import g_var
 import Logger
 import FileHelper
 import NetworkMgr
+import DataManager
 
 import api_func
 
-
-g_var._init()#在主模块初始化全局变量的dic
-
-# #定义当前的程序名称
-g_var.set_value("ApplicationTag", "stock_analyse")
-# #定义文件的根路径
-g_var.set_value('DataPath', root_path+'/data')
-
-# #定义跨模块全局变量
-g_var.set_value('HOST','https://ali-stock.showapi.com-8')
 
 
 
@@ -36,6 +39,7 @@ g_var.set_value('HOST','https://ali-stock.showapi.com-8')
 #注意：Logger的初始化必须比其他类早
 Logger._init()
 FileHelper._init()
+DataManager._init()
 
 
 # print("main_start>>> AppKey = %s, secret = %s"%(constant.AppKey, constant.AppSecret))
@@ -67,7 +71,7 @@ import Stock_block_model
 # 	print("keys = %s"%len(m_list))
 # 	print("obj.type = %s"%type(m_list[0]))
 # 	if(len(m_list) > 0):
-# 		fileObj = open(root_path+'/log_files/test.csv', '+')
+# 		fileObj = open(application_path+'/log_files/test.csv', '+')
 # 		# writer = csv.DictWriter(fileObj, m_list[0].keys())
 # 		# writer.writeheader()
 # 		bVal = csv.Sniffer().has_header(fileObj.readline())

@@ -5,8 +5,10 @@ import time
 import os
 import csv
 
-root_path = os.path.abspath('.')
-log_data_path = root_path+"/log_files/"
+import g_var
+
+application_path = g_var.get_value('ApplicationPath')
+log_data_path = application_path+"/log_files/"
 
 # #是否开启log的总开关
 IsLog = True

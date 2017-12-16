@@ -3,33 +3,37 @@
 # import system module
 import json
 
-import Logger
 import g_var
+import Logger
+import DataManager
+import NetworkMgr
 
 
 m_csvFilePath = g_var.get_value('DataPath')+'name-to-stockinfo'
 m_apiUrl = 'http://stock.market.alicloudapi.com'
 m_apiKeyword = '/name-to-stockinfo'
 
-
-def saveListDataToCSV(filePath, listData):
-	Logger.log("is saveListDataToCSV")
-
-
+""" 接口示范
+host = 'http://stock.market.alicloudapi.com'
+path = '/sz-sh-stock-history'
+method = 'GET'
+appcode = '你自己的AppCode'
+querys = 'begin=2015-09-01&code=600004&end=2015-09-02'
+bodys = {}
+url = host + path + '?' + querys
+"""
 
 def onSuccessRequest(bodyData):
 	print("is onSuccessRequest:: ---- %s"%str(bodyData))
 	if bodyData != None and bodyData.get("list") != None:
-		m_list = bodyData.get("list")
-		print("keys = %s"%len(m_list))
-	# if(len(m_list) > 0):
-	# 	# 到此处的逻辑未处理--------------------------------------
-	# 	fileObj = open(m_csvFilePath, 'a+')
-	# 	writer = csv.DictWriter(fileObj, m_list[0].keys())
-	# 	writer.writeheader()
+		listData = bodyData.get("list")
+		print("keys = %s"%len(listData))
+		if(len(listData) <= 0):
+			return
+		DataManager.saveJsonDataToFile("name-to-stockinfo.csv", listData)
 
-# url = "http://stock.market.alicloudapi.com/name-to-stockinfo?code=601006"
-# NetworkMgr.requestURLWithGet(url, onSuccessRequest)
+url = "http://stock.market.alicloudapi.com/sz-sh-stock-history?begin=2017-11-01&code=601006&end=2017-11-30"
+NetworkMgr.requestURLWithGet(url, onSuccessRequest)
 
-bodyDic = {'ret_code': 0, 'list': [{'stockType': 'A', 'market': 'sh', 'name': '大秦铁路', 'state': 1, 'currcapital': '1486679.1491', 'profit_four': '132.5979', 'code': '601006', 'totalcapital': '1486679.1491', 'mgjzc': '6.552233', 'pinyin': 'dqtl', 'listing_date': '2006-08-01', 'ct': '2016-10-16 15:39:17.914'}]}
-onSuccessRequest(bodyDic)
+【注意】
+最后一个问题：存储到csv文件，为啥会自动存储多一个空行？？？
