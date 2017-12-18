@@ -59,8 +59,8 @@ def saveListDataToCSV(fileName, listData):
 		headerKeys = listData[0].keys()
 		createCSVFile(fileName, headerKeys)
 	filePath = "%s/%s"%(m_dataPath, fileName)
-	fileObj = open(filePath, "a+", encoding='utf-8') 
-	# fileObj = open(filePath, "a+", encoding='gbk') #excel能够正确识别用gb2312、gbk、gb18030或utf_8 with BOM 编码的中文，如果是utf_8 no BOM编码的中文文件，excel打开会乱码。
+	fileObj = open(filePath, "a", encoding='utf-8') 
+	# fileObj = open(filePath, "a", encoding='gbk') #excel能够正确识别用gb2312、gbk、gb18030或utf_8 with BOM 编码的中文，如果是utf_8 no BOM编码的中文文件，excel打开会乱码。
 	csvWriter = csv.writer(fileObj)
 	for itemData in listData:
 		csvWriter.writerow(itemData.values())
