@@ -17,7 +17,7 @@ import FileHelper
 
 LOG_TAG = "DataManager"
 m_dataPath = g_var.get_value('DataPath')
-
+m_originalDataPath = m_dataPath+"/originalData"
 
 m_globalDataFileDic = {}
 
@@ -69,3 +69,14 @@ def saveListDataToCSV(fileName, listData):
 
 def saveListDataToSQLite(fileName, listData):
 	print("------------is.Func: saveListDataToSQLite()")
+
+def readOriginalDataFile(fileName):
+	filePath = "%s/%s"%(m_originalDataPath, fileName)
+	if not os.path.exists(filePath):
+		Logger.logError("【%s】该文件不存在！"%filePath)
+		return
+	Logger.log("读取文件的数据，filePath = %s"%filePath)
+	fileObj = open(filePath, "r", encoding='utf-8')
+	fileData = fileObj.read()
+	fileObj.close()
+	return fileData	

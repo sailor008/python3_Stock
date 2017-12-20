@@ -28,14 +28,31 @@ m_apiUrl = 'https://ali-stock.showapi.com'
 m_apiKeyword = '/stock-block-list'
 
 def onSuccessRequest(bodyData):
-	print("is onSuccessRequest:: ---- %s"%str(bodyData))
+	Logger.log("is onSuccessRequest:: ---- %s"%str(bodyData))
 	if bodyData != None and bodyData.get("list") != None:
 		listData = bodyData.get("list")
-		print("item.count = %s"%len(listData))
+		Logger.log("item.count = %s"%len(listData))
 		if(len(listData) <= 0):
 			return
+		# for classifyList in listData:
 		DataManager.saveJsonDataToFile(m_csvFileName, listData)
 
+
+
 #拼接url
-url = m_apiUrl + m_apiKeyword
-NetworkMgr.requestURLWithGet(url, onSuccessRequest)
+# url = m_apiUrl + m_apiKeyword
+# NetworkMgr.requestURLWithGet(url, onSuccessRequest)
+
+
+
+
+fileData = DataManager.readOriginalDataFile("stock_block_list.txt")
+if fileData != None:
+	jsonData = json.loads(fileData)
+	print(type(jsonData))
+	if jsonData != None and jsonData.get("list") != None:
+		listData = jsonData.get("list")
+		for classifyInfo in listData:
+			print("分类名称：%s"%classifyInfo.get("name"))
+else:
+	print("------------file is not esixt()")
