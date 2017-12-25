@@ -53,6 +53,13 @@ if fileData != None:
 	if jsonData != None and jsonData.get("list") != None:
 		listData = jsonData.get("list")
 		for classifyInfo in listData:
-			print("分类名称：%s"%classifyInfo.get("name"))
+			classifyName = classifyInfo.get("name")
+			print("分类名称：%s"%classifyName)
+			blockListData = classifyInfo.get("childList")
+			if blockListData != None and len(blockListData) > 0:
+				DataManager.saveJsonDataToFile("stockBlockList_%s.csv"%classifyName, blockListData)
 else:
 	print("------------file is not esixt()")
+
+
+

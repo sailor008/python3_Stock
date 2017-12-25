@@ -1,0 +1,14 @@
+name,childList,code
+农、林、牧、渔业,"[{'name': '农业', 'code': 'hangye_ZA01'}, {'name': '林业', 'code': 'hangye_ZA03'}, {'name': '畜牧业', 'code': 'hangye_ZA05'}, {'name': '渔业', 'code': 'hangye_ZA07'}, {'name': '农、林、牧、渔业', 'code': 'hangye_ZA09'}]",
+采掘业,"[{'name': '煤炭采选业', 'code': 'hangye_ZB01'}, {'name': '石油和天然气开采业', 'code': 'hangye_ZB03'}, {'name': '黑色金属矿采选业', 'code': 'hangye_ZB05'}, {'name': '有色金属矿采选业', 'code': 'hangye_ZB07'}, {'name': '其他矿采选业', 'code': 'hangye_ZB49'}, {'name': '采掘服务业', 'code': 'hangye_ZB50'}]",
+制造业,"[{'name': '食品、饮料', 'code': 'hangye_ZC0'}, {'name': '纺织、服装、皮毛', 'code': 'hangye_ZC1'}, {'name': '木材、家具', 'code': 'hangye_ZC2'}, {'name': '造纸、印刷', 'code': 'hangye_ZC3'}, {'name': '石油化工、塑胶塑料', 'code': 'hangye_ZC4'}, {'name': '电子', 'code': 'hangye_ZC5'}, {'name': '金属、非金属', 'code': 'hangye_ZC6'}, {'name': '机械、设备、仪表', 'code': 'hangye_ZC7'}, {'name': '医药、生物制品', 'code': 'hangye_ZC8'}, {'name': '其他制造业', 'code': 'hangye_ZC99'}]",
+电力、供水供气业,"[{'name': '电力、供水供气业', 'code': 'hangye_ZD01'}, {'name': '煤气生产和供应业', 'code': 'hangye_ZD03'}, {'name': '自来水生产供应业', 'code': 'hangye_ZD05'}]",
+建筑业,"[{'name': '土木工程建筑业', 'code': 'hangye_ZE01'}, {'name': '装修装饰业', 'code': 'hangye_ZE05'}]",
+交通运输、仓储业,"[{'name': '铁路运输业', 'code': 'hangye_ZF01'}, {'name': '公路运输业', 'code': 'hangye_ZF03'}, {'name': '管道运输业', 'code': 'hangye_ZF05'}, {'name': '水上运输业', 'code': 'hangye_ZF07'}, {'name': '航空运输业', 'code': 'hangye_ZF09'}, {'name': '交通运输辅助业', 'code': 'hangye_ZF11'}, {'name': '其他交通运输业', 'code': 'hangye_ZF19'}, {'name': '仓储业', 'code': 'hangye_ZF21'}]",
+信息技术业,"[{'name': '通信及相关设备业', 'code': 'hangye_ZG81'}, {'name': '计算机及相关设备业', 'code': 'hangye_ZG83'}, {'name': '通信服务业', 'code': 'hangye_ZG85'}, {'name': '计算机应用服务业', 'code': 'hangye_ZG87'}]",
+批发和零售贸易,"[{'name': '食品饮料、家用批发', 'code': 'hangye_ZH01'}, {'name': '能源、材料和机电业', 'code': 'hangye_ZH03'}, {'name': '零售业', 'code': 'hangye_ZH11'}, {'name': '商业经纪与代理业', 'code': 'hangye_ZH21'}]",
+金融、保险业,"[{'name': '银行业', 'code': 'hangye_ZI01'}, {'name': '保险业', 'code': 'hangye_ZI11'}, {'name': '证券、期货业', 'code': 'hangye_ZI21'}, {'name': '金融信托业', 'code': 'hangye_ZI31'}, {'name': '基金业', 'code': 'hangye_ZI41'}, {'name': '其他金融业', 'code': 'hangye_ZI99'}]",
+房地产业,"[{'name': '房地产中介服务业', 'code': 'hangye_ZJ09'}, {'name': '房地产开发与经营业', 'code': 'hangye_ZJ01'}, {'name': '房地产管理业', 'code': 'hangye_ZJ05'}]",
+社会服务业,"[{'name': '公共设施服务业', 'code': 'hangye_ZK01'}, {'name': '专业、科研服务业', 'code': 'hangye_ZK20'}, {'name': '餐饮业', 'code': 'hangye_ZK30'}, {'name': '旅馆业', 'code': 'hangye_ZK32'}, {'name': '旅游业', 'code': 'hangye_ZK34'}, {'name': '卫生、保健、护理业', 'code': 'hangye_ZK37'}, {'name': '租赁服务业', 'code': 'hangye_ZK39'}, {'name': '其他社会服务业', 'code': 'hangye_ZK99'}]",
+传播与文化产业,"[{'name': '出版业', 'code': 'hangye_ZL01'}, {'name': '声像业', 'code': 'hangye_ZL05'}, {'name': '广播电影电视业', 'code': 'hangye_ZL10'}, {'name': '艺术业', 'code': 'hangye_ZL15'}, {'name': '信息传播服务业', 'code': 'hangye_ZL20'}, {'name': '其他传播、文化产业', 'code': 'hangye_ZL99'}]",
+综合类,[],hangye_ZM
