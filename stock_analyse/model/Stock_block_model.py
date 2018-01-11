@@ -1,4 +1,9 @@
-# FileNam: Stock_block_model.py
+"""
+FileName: Stock_block_model
+查询股票的历史行情
+"""
+
+
 """ 接口示范
 host = 'http://stock.market.alicloudapi.com'
 path = '/sz-sh-stock-history'

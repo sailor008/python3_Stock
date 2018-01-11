@@ -51,7 +51,8 @@ DataManager._init()
 
 
 # import Stock_block_model
-import Stock_block_list_model
+# import Stock_block_list_model
 
+# DataManager.writeOriginalData("tesatfewagtewaew")
 
 

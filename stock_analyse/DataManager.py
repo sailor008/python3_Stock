@@ -4,6 +4,7 @@ FileName: DataManager.py
 """
 import sys
 import os
+import time
 
 import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
@@ -80,3 +81,18 @@ def readOriginalDataFile(fileName):
 	fileData = fileObj.read()
 	fileObj.close()
 	return fileData	
+
+def writeOriginalData(dataParam, fileName = None):
+	if fileName == None:
+		nowSecond = int(time.time())
+		print(nowSecond)
+		fileName = "default_%s.txt"%nowSecond
+	filePath = "%s/%s"%(m_originalDataPath, fileName)
+	fileObj = open(filePath, "a")
+	m_globalDataFileDic[fileName] = filePath
+	fileObj.write(dataParam)
+	fileObj.close()
+
+
+
+

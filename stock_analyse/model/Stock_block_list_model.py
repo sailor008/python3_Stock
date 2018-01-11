@@ -1,5 +1,5 @@
 """
-FileName: Stock-block-list.py
+FileName: Stock-block-list
 查询股票板块列表
 """
 
@@ -39,13 +39,12 @@ def onSuccessRequest(bodyData):
 
 
 
-#拼接url
+### 拼接url, sendRequest
 # url = m_apiUrl + m_apiKeyword
 # NetworkMgr.requestURLWithGet(url, onSuccessRequest)
 
 
-
-
+### 按分类存储数据
 fileData = DataManager.readOriginalDataFile("stock_block_list.txt")
 if fileData != None:
 	jsonData = json.loads(fileData)
