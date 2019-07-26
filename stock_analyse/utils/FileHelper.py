@@ -17,6 +17,7 @@ import Logger
 LOG_TAG = "FileHelper"
 application_path = g_var.get_value("applicationPath")
 
+
 def _init():
 	Logger.log("is FileHelper.init()")
 
