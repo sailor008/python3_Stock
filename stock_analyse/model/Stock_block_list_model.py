@@ -41,7 +41,7 @@ def onSuccessRequest(bodyData):
 
 ### 拼接url, sendRequest
 # url = m_apiUrl + m_apiKeyword
-# NetworkMgr.requestURLWithGet(url, onSuccessRequest)
+# NetworkMgr.requestGetFromAliAPI(url, onSuccessRequest)
 
 
 ### 按分类存储数据

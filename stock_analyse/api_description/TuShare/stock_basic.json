@@ -1,0 +1,32 @@
+// 接口：stock_basic
+// 描述：获取基础信息数据，包括股票代码、名称、上市日期、退市日期等
+
+
+////----------------[[接口请求的参数]]------------------
+// 名称	            类型	必选	描述
+// is_hs	        str	    N	是否沪深港通标的，N否 H沪股通 S深股通
+// list_status	    str	    N	上市状态 L上市 D退市 P暂停上市，默认是L
+// exchange	        str	    N	交易所 SSE上交所 SZSE深交所
+// ts_code	        str	    N	TS股票代码
+// market	        str	    N	市场类别
+// name	            str	    N	名称
+
+
+////----------------[[输出参数]]------------------
+// 名称	            类型	默认显示	描述
+// ts_code	        str	    Y	    TS代码
+// symbol	        str	    Y	    股票代码
+// name	            str	    Y	    股票名称
+// area	            str	    Y	    地域
+// industry	        str	    Y	    所属行业
+// fullname	        str	    N	    股票全称
+// enname	        str	    N	    英文全称
+// cnspell	        str	    N	    拼音缩写
+// market	        str	    Y	    市场类型（主板/创业板/科创板/CDR）
+// exchange	        str	    N	    交易所代码
+// curr_type	    str	    N	    交易货币
+// list_status	    str	    N	    上市状态 L上市 D退市 P暂停上市
+// list_date	    str	    Y	    上市日期
+// delist_date	    str	    N	    退市日期
+// is_hs	        str	    N	    是否沪深港通标的，N否 H沪股通 S深股通
+

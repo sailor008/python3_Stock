@@ -1,8 +1,8 @@
--- 获取股票的行情
+// 获取股票的行情
 
--- 调用地址：http(s)://stock.market.alicloudapi.com/real-stockinfo
+// 调用地址：http(s)://stock.market.alicloudapi.com/real-stockinfo
 
--- 请求方式：GET
+//-- 请求方式：GET
 
 
 {

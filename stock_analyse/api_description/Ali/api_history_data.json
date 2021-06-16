@@ -1,8 +1,8 @@
--- 沪深股票历史行情
+// 沪深股票历史行情
 
--- 调用地址：http://stock.market.alicloudapi.com/sz-sh-stock-history
+// 调用地址：http://stock.market.alicloudapi.com/sz-sh-stock-history
 
--- 请求方式：GET
+// 请求方式：GET
 
 
 

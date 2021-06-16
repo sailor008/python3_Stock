@@ -37,4 +37,4 @@ def onSuccessRequest(bodyData):
 		DataManager.saveJsonDataToFile("name-to-stockinfo.csv", listData)
 
 url = "http://stock.market.alicloudapi.com/sz-sh-stock-history?begin=2017-11-01&code=601006&end=2017-11-30"
-NetworkMgr.requestURLWithGet(url, onSuccessRequest)
+NetworkMgr.requestGetFromAliAPI(url, onSuccessRequest)

@@ -1,9 +1,9 @@
 
--- 股票实时K线图
+// 股票实时K线图
 
--- 调用地址：http://stock.market.alicloudapi.com/realtime-k
+// 调用地址：http://stock.market.alicloudapi.com/realtime-k
 
--- 请求方式：GET
+// 请求方式：GET
 
 
 

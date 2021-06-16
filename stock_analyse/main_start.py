@@ -30,7 +30,8 @@ import FileHelper
 import NetworkMgr
 import DataManager
 
-import api_func
+
+import TuShare_api
 
 
 
@@ -54,5 +55,11 @@ DataManager._init()
 # import Stock_block_list_model
 
 # DataManager.writeOriginalData("tesatfewagtewaew")
+
+
+
+
+
+TuShare_api.GetOneStockDaily("301000.SZ", "20210520", "20210601")
 
 

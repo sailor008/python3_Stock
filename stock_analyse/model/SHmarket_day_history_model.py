@@ -40,7 +40,7 @@ def onSuccessRequest(bodyData):
 ## 拼接url, sendRequest
 querys = 'code=000001&month=201712'
 url = m_apiUrl + m_apiKeyword + '?' + querys
-NetworkMgr.requestURLWithGet(url, onSuccessRequest)
+NetworkMgr.requestAndGetFromAliAPI(url, onSuccessRequest)
 
 
 ### 使用队列进行网络请求 【注意：未完成，待学习！！！】

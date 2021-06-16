@@ -1,9 +1,9 @@
 
--- 股票实时分时线数据
+// 股票实时分时线数据
 
--- 调用地址：http://stock.market.alicloudapi.com/timeline
+// 调用地址：http://stock.market.alicloudapi.com/timeline
 
--- 请求方式：GET
+// 请求方式：GET
 
 
 
