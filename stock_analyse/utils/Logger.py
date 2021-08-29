@@ -39,7 +39,7 @@ def log(msg, tag = None):
 	if not IsLog:
 		return
 	if tag==None:
-		tag = "==>>";
+		tag = "==>>"
 	print("%s : %s \n"%(tag,msg))
 
 def logTip(msg):
@@ -48,34 +48,34 @@ def logTip(msg):
 def logError(msg):
 	log(msg, "Error")
 
-def writeSingleLine(msg, tag = None):
+
+
+def writeLineLog(msg, tag = None):
 	if not IsLog:
 		return
 	if tag==None:
-		tag = "BaseLog";
+		tag = "BaseLog"
 	print("------------is log file exist???:%d" %os.path.isfile(m_todayLogPath+m_todayDate+".csv"))
-	startWriteArrowLog()
+	startWriteLogs()
 	try:
-		writeRowLog(msg, tag)
+		writeLog(msg, tag)
 	finally:
-		endWriteArrowLog()
+		endWriteLogs()
 
-def startWriteArrowLog():
+def startWriteLogs():
 	global m_logFileWriter
 	m_logFileWriter = getLogFileWriter()
 
-def writeRowLog(msg, tag = None):
+def writeLog(msg, tag = None):
 	if m_logFileWriter == None:
 		print("Error: log file writer is not init!!!")
 		return
 	if tag==None:
-		tag = "BaseLog";
+		tag = "BaseLog"
 	timestamp = time.time()
 	m_logFileWriter.writerow((timestamp, tag, msg)) 
-def writeArrowLog(msgArray, tag = None):
-	print("----")
 
-def endWriteArrowLog():
+def endWriteLogs():
 	global m_logFileObj
 	global m_logFileWriter
 	m_logFileObj.close()
@@ -100,21 +100,6 @@ def getLogFileWriter():
 		fileWriter.writerow(['Time', 'Tag', 'Content'])
 	return fileWriter
 
-
-def func_replaceFileWithData(file, data):
-	log("is func_replaceFileWithData-->>>")
-
-def func_appendDataToFile(file, data):
-	log("is func_appendDataToFile-->>>")
-
-def func_readFileData(file, data):
-	log("is func_readFileData-->>>")
-
-def func_deleteFile(file, data):
-	log("is func_deleteFile-->>>")
-
-def func_clearFileData(file, data):
-	log("is func_clearFileData-->>>")
 
 
 

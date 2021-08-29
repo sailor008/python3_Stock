@@ -48,18 +48,53 @@ DataManager._init()
 # api_func.request_stock_block_list()
 
 
-# Logger.writeSingleLine("--->>>test_log565631", None)
+# Logger.writeLineLog("--->>>test_log565631", None)
 
 
 # import Stock_block_model
 # import Stock_block_list_model
-
 # DataManager.writeOriginalData("tesatfewagtewaew")
 
 
 
 
+# TuShare_api.GetOneStockDaily("301000.SZ", "20210520", "20210601")
+# TuShare_api.GetOneStockBasic("301000.SZ")
 
-TuShare_api.GetOneStockDaily("301000.SZ", "20210520", "20210601")
 
 
+
+# from SqliteUtil import SqliteUtil
+# from SqliteUtil import SQLDataTypeEnum
+from utils.SqliteUtil import *
+
+
+m_dataPath = g_var.get_value('DataPath')
+testDb = m_dataPath+os.path.sep + "test.db"
+tableName = "tab1"
+SqliteUtil().ConnectSql(testDb)
+SqliteUtil().CreateTable(tableName, [
+    "id integer primary key", 
+    "name varchar(10) UNIQUE", 
+    "fucktime datetime",
+])
+SqliteUtil().InsertDataList(tableName, ("id", "name", "fucktime"), [[1, "fuck001", "2021-05-21"], [2, "fuck002", "2021-05-21"]])
+# SqliteUtil().CloseSql()
+
+
+
+
+
+
+
+if __name__ == "__main__":
+    #作为脚本直接执行会调用此处代码
+    pass
+
+
+
+
+
+
+
+# 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

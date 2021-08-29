@@ -9,12 +9,14 @@ import time
 import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 import csv
-import codecs
+
+
 
 #global custom code
 import g_var
 import Logger
 import FileHelper
+
 
 LOG_TAG = "DataManager"
 m_dataPath = g_var.get_value('DataPath')
@@ -38,8 +40,14 @@ def initDataFileDic():
 	m_globalDataFileDic = FileHelper.getFileList(m_dataPath)
 	print("data文件的总数 = %d"%len(m_globalDataFileDic.keys()))
 	for keystr, val in m_globalDataFileDic.items():
-		Logger.log("------>>> %s : %s \n" %(keystr,val), LOG_TAG)
+		Logger.log("---->>> %s : %s \n" %(keystr,val), LOG_TAG)
 	print("Tip: DataFileDic init success!")
+
+def saveJsonDataToFile(fileName, jsonData, fileType="csv"):
+	if fileType == "csv":
+		saveListDataToCSV(fileName, jsonData)
+	else:
+		saveListDataToSQLite(fileName, jsonData)
 
 def createCSVFile(fileName, headerKeys):
 	filePath = "%s/%s"%(m_dataPath, fileName)
@@ -47,12 +55,6 @@ def createCSVFile(fileName, headerKeys):
 	fileWriter = csv.DictWriter(fileObj, fieldnames = headerKeys)
 	fileWriter.writeheader()
 	m_globalDataFileDic[fileName] = filePath
-
-def saveJsonDataToFile(fileName, jsonData, fileType="csv"):
-	if fileType == "csv":
-		saveListDataToCSV(fileName, jsonData)
-	else:
-		saveListDataToSQLite(fileName, jsonData)
 
 def saveListDataToCSV(fileName, listData):
 	print("is saveListDataToCSV, list.count = %d"%len(listData))
@@ -69,7 +71,7 @@ def saveListDataToCSV(fileName, listData):
 	fileObj.close()
 
 def saveListDataToSQLite(fileName, listData):
-	print("------------is.Func: saveListDataToSQLite()")
+	pass
 
 def readOriginalDataFile(fileName):
 	filePath = "%s/%s"%(m_originalDataPath, fileName)

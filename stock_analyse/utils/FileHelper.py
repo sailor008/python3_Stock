@@ -18,6 +18,42 @@ LOG_TAG = "FileHelper"
 application_path = g_var.get_value("applicationPath")
 
 
+
+
+
+
+
+file_exclude_patterns = [
+	"*.gitignore",
+	"*.meta",
+	"*.pyc",
+	"*.pyo",
+	"*.exe",
+	"*.dll",
+	"*.obj",
+	"*.o",
+	"*.a",
+	"*.lib",
+	"*.so",
+	"*.dylib",
+	"*.ncb",
+	"*.sdf",
+	"*.suo",
+	"*.pdb",
+	"*.idb",
+	".DS_Store",
+	"*.class",
+	"*.psd",
+	"*.db",
+	"*.sublime-workspace",
+	".svn",
+]
+
+
+
+
+
+
 def _init():
 	Logger.log("is FileHelper.init()")
 
